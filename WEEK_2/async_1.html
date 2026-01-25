@@ -1,36 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <script>
+      const whereAml = (lat, lng) => {
+        const request = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Http error! ${response.status}`);
+            }
 
-        const whereAml = (lat, lng) => {
-            const request = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-                .then(response => {
-                    if (!response.ok)
-                        throw new Error('Network response was not ok: ' + response.statusText);
+            return response.json();
+          })
+          .then((data) => {
+            if (!data.city || !data.country) {
+              throw new Error(
+                "Invalid location data received from API, Error: Too many request per sencond",
+              );
+            }
 
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(function (error) {
-                    console.error('There has been a problem with your fetch operation:', error);
-                });
-        }
+            console.log(`Your are in ${data.city}, ${data.country}`);
+          })
+          .catch(function (error) {
+            console.error("Error: ", error);
+          });
+      };
 
-        whereAml(52.508,13.381);
-
+      whereAml(52.508, 13.381);
     </script>
-
-</body>
-
+  </body>
 </html>
