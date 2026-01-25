@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        const whereAml = (lat, lng) => {
+            const request = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+                .then(response => {
+                    if (!response.ok)
+                        throw new Error('Network response was not ok: ' + response.statusText);
+
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(function (error) {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+
+        whereAml(52.508,13.381);
+
+    </script>
+
+</body>
+
+</html>

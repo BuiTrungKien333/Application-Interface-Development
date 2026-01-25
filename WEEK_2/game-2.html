@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const game = {
+        team1: "Bayern Munich",
+        team2: "Borrussia Dortmund",
+        players: [
+          [
+            "Neuer",
+            "Pavard",
+            "Martinez",
+            "Alaba",
+            "Davies",
+            "Kimmich",
+            "Goretzka",
+            "Coman",
+            "Muller",
+            "Gnarby",
+            "Lewandowski",
+          ],
+          [
+            "Burki",
+            "Schulz",
+            "Hummels",
+            "Akanji",
+            "Hakimi",
+            "Weigl",
+            "Witsel",
+            "Hazard",
+            "Brandt",
+            "Sancho",
+            "Gotze",
+          ],
+        ],
+        score: "4:0",
+        scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+        date: "Nov 9th, 2037",
+        odds: {
+          team1: 1.33,
+          x: 3.25,
+          team2: 6.5,
+        },
+      };
+
+      // cau 1
+      game.scored.forEach((name, index) => {
+        console.log(`Goal ${index}: ${name}`);   
+      });
+
+      // cau 2
+      const values = Object.values(game.odds)   
+      console.log(`avg = ${values.reduce((sum, value) => sum + value, 0) / values.length}`);
+     
+      // cau 3
+      console.log(`Odd of victory ${game.team1}: ${game.odds.team1}`);
+      console.log(`Odd of victory draw: ${game.odds.x}`);
+      console.log(`Odd of victory ${game.team2}: ${game.odds.team2}`);
+
+      // cau 4
+      const scorers = new Map();
+      
+      game.scored.forEach(name => {
+        scorers.set(name, scorers.get(name) != undefined ? parseInt(scorers.get(name)) + 1 : 1);
+      });
+
+      console.log(scorers)
+      
+    </script>
+  </body>
+</html>
