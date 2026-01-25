@@ -7,7 +7,7 @@
   </head>
 
   <body>
-    <script>
+    <!-- <script>
       const whereAml = (lat, lng) => {
         const request = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
           .then((response) => {
@@ -31,7 +31,37 @@
           });
       };
 
-      whereAml(52.508, 13.381);
+      whereAml(21.03, 105.85);
+    </script> -->
+
+    <script>
+      const whereAml = async (lat, lng) => {
+        try {
+          const response = await fetch(
+            `https://geocode.xyz/${lat},${lng}?geoit=json`,
+          );
+
+          if (!response.ok) throw new Error("Error get location");
+
+          const data = await response.json();
+
+          const country = data.country;
+
+          const countryRes = await fetch(
+            `https://restcountries.com/v3.1/name/${country || "Germany"}`,
+          );
+
+          if (!countryRes.ok) throw new Error("Country not found");
+
+          const countryData = await countryRes.json();
+
+          console.log(countryData);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      whereAml(21.03, 105.85);
     </script>
   </body>
 </html>
