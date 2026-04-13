@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Paracetamol 500mg",
+    "category": "Thuốc giảm đau",
+    "price": 35000,
+    "inStock": 150
+  },
+  {
+    "id": 2,
+    "name": "Vitamin C 1000mg",
+    "category": "Thực phẩm chức năng",
+    "price": 120000,
+    "inStock": 50
+  },
+  {
+    "id": 3,
+    "name": "Nước muối sinh lý 0.9%",
+    "category": "Vật tư y tế",
+    "price": 5000,
+    "inStock": 300
+  },
+  {
+    "id": 4,
+    "name": "Băng gạc vô trùng",
+    "category": "Vật tư y tế",
+    "price": 15000,
+    "inStock": 80
+  },
+  {
+    "id": 5,
+    "name": "Sirô ho Bổ Phế",
+    "category": "Thuốc ho",
+    "price": 45000,
+    "inStock": 40
+  }
+]
